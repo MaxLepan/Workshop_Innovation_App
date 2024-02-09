@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SwiftUI_BestFriend
-//
-//  Created by digital on 10/11/2023.
-//
-
 import SwiftUI
 import UIKit
 
@@ -22,23 +15,34 @@ struct ChatView: View {
             VStack{
                 VStack {
                     HStack {
-                        Spacer()
-                        Image("gear")
+                        Image("retour")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 30, height: 10)
+                            .frame(width: 49, height: 49)
                             .padding()
-                            .onTapGesture {
-                                self.showSettings = true
-                            }
-                    }.padding(.top, 45)
+                        Image("logo_hapy")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 148, height: 59)
+                            .padding([.leading], 45)
+//                        Image("gear")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fill)
+//                            .frame(width: 30, height: 10)
+//                            .padding()
+//                            .onTapGesture {
+//                                self.showSettings = true
+//                            }
+                        Spacer()
+                    }.padding([.top], 81)
                     
+                    // Modifier pour rendre le fond de la liste transparent
                     List(self.$chatObservable.messageList){message in
                         MessageView(message: message.wrappedValue)
+                            .listRowBackground(Color.clear) // Applique un fond transparent à chaque ligne
                     }
-                    .listStyle(PlainListStyle())
-                    .background(.clear)
-                    .padding()
+                    .listStyle(PlainListStyle()) // Utiliser PlainListStyle
+                    .background(.clear) // Tenter de rendre le fond de la liste transparent
                     
                     if image.size.width > 0 {
                         Image(uiImage: image)
@@ -53,18 +57,18 @@ struct ChatView: View {
                     Image("fond-degrade")
                         .resizable()
                         .frame(width: geometry.size.width, height: geometry.size.height-40)
-                        
                 )
                 HStack{
                     Image("scanner")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 40, height: 40)
-                        .padding()
                         .onTapGesture {
                             self.showImagePicker = true
                         }
                     TextField("Message to send…", text: $message)
+                        .padding(.horizontal)
+                        .frame(height: 40)
                         .background(RoundedRectangle(cornerRadius: 50).fill(Color(red: 200 / 255, green: 186 / 255, blue: 211 / 255)))
                         .overlay(
                             RoundedRectangle(cornerRadius: 50).fill(.clear)
@@ -78,8 +82,8 @@ struct ChatView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 40, height: 40)
-                        .padding()
-                }.padding()
+                }
+                .padding()
             }.sheet(isPresented: $showSettings, content: {
                 SettingsView()
             })
@@ -103,8 +107,4 @@ struct ChatView: View {
             }
         }.ignoresSafeArea()
     }
-}
-
-#Preview {
-    ChatView()
 }

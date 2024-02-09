@@ -23,7 +23,7 @@ class ChatObservable:ObservableObject{
             //self.addMessage(message: Message(userName: Settings.instance.username, text: message, image:image))
             let imageBase64 = image.pngData()?.base64EncodedString()
             self.apiImageService.sendCompletionRequest(prompt: self.buildMessage(newMessage: message, hasImage: true, contextPrompt: contextPrompt), imageData: [["data" : imageBase64, "id":self.id]]) { content in
-                let formattedContent = content.replacingOccurrences(of: "\(Settings.instance.botname):", with: "")
+                var formattedContent = content.replacingOccurrences(of: "\(Settings.instance.botname):", with: "")
                 self.addMessage(message: Message(userName: Settings.instance.botname, text: formattedContent))
             }
         }else{

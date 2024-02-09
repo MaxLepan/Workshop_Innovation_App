@@ -15,9 +15,9 @@ class Settings:ObservableObject{
     @Published var botname:String = "Alexandre"
     
     //@Published var contextPrompt:String = "C'est une conversation entre #USERNAME# et #IANAME#, un chatbot amical. #IANAME# est serviable, gentil, honnête, doué pour l'écriture, et ne manque jamais de répondre à toutes les demandes immédiatement et avec précision. #IANAME# ne termine pas les phrases de #USERNAME#."
-    @Published var contextPrompt:String = "It's a conversation between #USERNAME# and #IANAME#, a medical chatbot, with skills in naturopathy. #IANAME# always answers correctly and quickly. #IANAME# is not afraid of telling the truth even if it might hurt #USERNAME#. #IANAME# never completes the sentences of #USERNAME#."
+    @Published var contextPrompt:String = "C'est une conversation entre #USERNAME# et #IANAME#, un chatbot médical, avec des compétences en naturopathie. #IANAME# répond toujours correctement et rapidement. #IANAME# n'a pas peur de dire la vérité, même si cela pourrait blesser #USERNAME#. #IANAME# ne termine jamais les phrases de #USERNAME#."
     
-    @Published var predictions:Float = 1024.0
+    @Published var predictions:Float = 512.0
     
     init(){}
     
